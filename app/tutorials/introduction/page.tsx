@@ -18,7 +18,7 @@ export default function IntroductionPage() {
 
           <FadeIn duration={125}>
             <p className="text-muted-foreground">
-              Learn the fundamentals of APIs and why they're important in modern
+              Learn the fundamentals of APIs and why they&apos;re important in modern
               web development
             </p>
           </FadeIn>
@@ -54,7 +54,7 @@ export default function IntroductionPage() {
                 <h3 className="font-medium mb-2">Real-world Analogy</h3>
                 <p>
                   Think of an API like a waiter at a restaurant. You (the
-                  client) don't go directly into the kitchen (the server's
+                  client) don&apos;t go directly into the kitchen (the server&apos;s
                   internal system) to prepare your meal. Instead, you give your
                   order to the waiter (the API), who takes it to the kitchen,
                   and then brings back your food (the response).
@@ -136,7 +136,7 @@ export default function IntroductionPage() {
                   <p>
                     Simple Object Access Protocol (SOAP) is a protocol that uses
                     XML for message format and typically relies on HTTP or SMTP
-                    for message transmission. It's more rigid and feature-rich
+                    for message transmission. It&apos;s more rigid and feature-rich
                     than REST.
                   </p>
                 </div>

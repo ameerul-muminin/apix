@@ -67,7 +67,7 @@ export default function RequestsPage() {
                 <div className="p-3 border rounded-md">
                   <h3 className="font-medium mb-1">PUT</h3>
                   <p className="text-sm">
-                    Used to update a resource or create it if it doesn't exist
+                    Used to update a resource or create it if it doesn&apos;t exist
                     at the specified URL.
                   </p>
                   <div className="mt-2 p-2 bg-muted rounded text-sm font-mono">
