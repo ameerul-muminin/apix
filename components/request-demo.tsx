@@ -24,7 +24,7 @@ export function RequestDemo() {
     setResponse(null)
 
     try {
-      const headerObj = {}
+      const headerObj: Record<string, string> = {};
       if (headers) {
         headers.split("\n").forEach((line) => {
           const [key, value] = line.split(":").map((item) => item.trim())
