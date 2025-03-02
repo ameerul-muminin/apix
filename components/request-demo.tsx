@@ -15,11 +15,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { Loader2, Play } from "lucide-react";
 
-interface ApiResponse {
+interface ApiResponse<T = unknown> {
   status: number;
   statusText: string;
   headers: Record<string, string>;
-  data: any;
+  data: T;
 }
 
 export function RequestDemo() {
