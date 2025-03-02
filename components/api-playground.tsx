@@ -43,12 +43,19 @@ const SAMPLE_APIS = [
   },
 ]
 
+type ApiResponse = {
+  status: number
+  statusText: string
+  headers: Record<string, string>
+  data: unknown
+} | null
+
 export function ApiPlayground() {
   const [url, setUrl] = useState("https://jsonplaceholder.typicode.com/posts")
   const [method, setMethod] = useState("GET")
   const [headers, setHeaders] = useState("")
   const [body, setBody] = useState("")
-  const [response, setResponse] = useState<any>(null)
+  const [response, setResponse] = useState<ApiResponse>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [savedRequests, setSavedRequests] = useState<
