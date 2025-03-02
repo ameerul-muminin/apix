@@ -12,7 +12,7 @@ export function SiteHeader() {
         <MainNav />
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="icon" asChild className="rounded-full">
-            <Link href="https://github.com" target="_blank" rel="noreferrer">
+            <Link href="https://github.com/ameerul-muminin/apix" target="_blank" rel="noreferrer">
               <Github className="h-5 w-5" />
               <span className="sr-only">GitHub</span>
             </Link>

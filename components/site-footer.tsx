@@ -7,7 +7,7 @@ export function SiteFooter() {
         <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
           Built with Next.js and Tailwind CSS. The source code is available on{" "}
           <Link
-            href="https://github.com"
+            href="https://github.com/ameerul-muminin/apix"
             target="_blank"
             rel="noreferrer"
             className="font-medium underline underline-offset-4"
