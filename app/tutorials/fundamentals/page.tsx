@@ -20,19 +20,30 @@ import { CodeBlock } from "@/components/code-block";
 import FadeIn from "@/components/fadein-wrapper";
 import { useState, useEffect } from "react";
 
-export default function FundamentalsPage() {
-  const [activeTab, setActiveTab] = useState("rest");
+function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-
+    
+    // Initial check
     checkIsMobile();
+    
+    // Add event listener
     window.addEventListener("resize", checkIsMobile);
+    
+    // Cleanup
     return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
+
+  return isMobile;
+}
+
+export default function FundamentalsPage() {
+  const [activeTab, setActiveTab] = useState("rest");
+  const isMobile = useIsMobile();
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -55,10 +66,10 @@ export default function FundamentalsPage() {
           {isMobile ? (
             <div className="space-y-8">
               <Select value={activeTab} onValueChange={setActiveTab}>
-                <SelectTrigger>
+                <SelectTrigger className="w-full mb-4">
                   <SelectValue placeholder="Select a topic" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="w-[calc(100vw-2rem)] sm:w-full">
                   <SelectItem value="rest">REST Principles</SelectItem>
                   <SelectItem value="methods">HTTP Methods</SelectItem>
                   <SelectItem value="resources">Resources</SelectItem>
@@ -114,20 +125,72 @@ DELETE /api/users/123    // Delete user`}
                   </CardHeader>
                   <CardContent>
                     <div className="grid gap-4">
-                      {httpMethods.map((method) => (
-                        <div key={method.name} className="p-4 border rounded-lg">
-                          <h3 className="font-semibold text-lg mb-2">
-                            {method.name}
-                          </h3>
-                          <p className="text-muted-foreground mb-3">
-                            {method.description}
-                          </p>
+                      <div className="p-4 border rounded-lg">
+                        <h3 className="font-semibold text-lg mb-2">GET</h3>
+                        <p className="text-muted-foreground mb-3">
+                          Retrieve a resource or collection of resources
+                        </p>
+                        <div className="max-w-full overflow-x-auto">
                           <CodeBlock
-                            code={method.example}
+                            code={`// Retrieve a user
+const response = await fetch('/api/users/123')
+const user = await response.json()`}
                             language="javascript"
                           />
                         </div>
-                      ))}
+                      </div>
+
+                      <div className="p-4 border rounded-lg">
+                        <h3 className="font-semibold text-lg mb-2">POST</h3>
+                        <p className="text-muted-foreground mb-3">
+                          Create a new resource
+                        </p>
+                        <div className="max-w-full overflow-x-auto">
+                          <CodeBlock
+                            code={`// Create a new user
+const response = await fetch('/api/users', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: 'John Doe', email: 'john@example.com' })
+})`}
+                            language="javascript"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="p-4 border rounded-lg">
+                        <h3 className="font-semibold text-lg mb-2">PUT</h3>
+                        <p className="text-muted-foreground mb-3">
+                          Update or replace an existing resource
+                        </p>
+                        <div className="max-w-full overflow-x-auto">
+                          <CodeBlock
+                            code={`// Update a user
+const response = await fetch('/api/users/123', {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: 'John Smith' })
+})`}
+                            language="javascript"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="p-4 border rounded-lg">
+                        <h3 className="font-semibold text-lg mb-2">DELETE</h3>
+                        <p className="text-muted-foreground mb-3">
+                          Remove a resource
+                        </p>
+                        <div className="max-w-full overflow-x-auto">
+                          <CodeBlock
+                            code={`// Delete a user
+const response = await fetch('/api/users/123', {
+  method: 'DELETE'
+})`}
+                            language="javascript"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -273,20 +336,72 @@ DELETE /api/users/123    // Delete user`}
                   </CardHeader>
                   <CardContent>
                     <div className="grid gap-4">
-                      {httpMethods.map((method) => (
-                        <div key={method.name} className="p-4 border rounded-lg">
-                          <h3 className="font-semibold text-lg mb-2">
-                            {method.name}
-                          </h3>
-                          <p className="text-muted-foreground mb-3">
-                            {method.description}
-                          </p>
+                      <div className="p-4 border rounded-lg">
+                        <h3 className="font-semibold text-lg mb-2">GET</h3>
+                        <p className="text-muted-foreground mb-3">
+                          Retrieve a resource or collection of resources
+                        </p>
+                        <div className="max-w-full overflow-x-auto">
                           <CodeBlock
-                            code={method.example}
+                            code={`// Retrieve a user
+const response = await fetch('/api/users/123')
+const user = await response.json()`}
                             language="javascript"
                           />
                         </div>
-                      ))}
+                      </div>
+
+                      <div className="p-4 border rounded-lg">
+                        <h3 className="font-semibold text-lg mb-2">POST</h3>
+                        <p className="text-muted-foreground mb-3">
+                          Create a new resource
+                        </p>
+                        <div className="max-w-full overflow-x-auto">
+                          <CodeBlock
+                            code={`// Create a new user
+const response = await fetch('/api/users', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: 'John Doe', email: 'john@example.com' })
+})`}
+                            language="javascript"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="p-4 border rounded-lg">
+                        <h3 className="font-semibold text-lg mb-2">PUT</h3>
+                        <p className="text-muted-foreground mb-3">
+                          Update or replace an existing resource
+                        </p>
+                        <div className="max-w-full overflow-x-auto">
+                          <CodeBlock
+                            code={`// Update a user
+const response = await fetch('/api/users/123', {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: 'John Smith' })
+})`}
+                            language="javascript"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="p-4 border rounded-lg">
+                        <h3 className="font-semibold text-lg mb-2">DELETE</h3>
+                        <p className="text-muted-foreground mb-3">
+                          Remove a resource
+                        </p>
+                        <div className="max-w-full overflow-x-auto">
+                          <CodeBlock
+                            code={`// Delete a user
+const response = await fetch('/api/users/123', {
+  method: 'DELETE'
+})`}
+                            language="javascript"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -387,41 +502,3 @@ GET /api/v1/listUserPosts/123`}
     </div>
   );
 }
-
-const httpMethods = [
-  {
-    name: "GET",
-    description: "Retrieve a resource or collection of resources",
-    example: `// Retrieve a user
-const response = await fetch('/api/users/123')
-const user = await response.json()`,
-  },
-  {
-    name: "POST",
-    description: "Create a new resource",
-    example: `// Create a new user
-const response = await fetch('/api/users', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ name: 'John Doe', email: 'john@example.com' })
-})`,
-  },
-  {
-    name: "PUT",
-    description: "Update or replace an existing resource",
-    example: `// Update a user
-const response = await fetch('/api/users/123', {
-  method: 'PUT',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ name: 'John Smith' })
-})`,
-  },
-  {
-    name: "DELETE",
-    description: "Remove a resource",
-    example: `// Delete a user
-const response = await fetch('/api/users/123', {
-  method: 'DELETE'
-})`,
-  },
-];

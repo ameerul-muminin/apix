@@ -210,7 +210,7 @@ export function ApiPlayground() {
                 </TabsContent>
               </Tabs>
 
-              <div className="flex justify-between items-center">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
                 <div className="flex items-center gap-2">
                   <Input
                     placeholder="Request name"
@@ -222,7 +222,7 @@ export function ApiPlayground() {
                     <Save className="mr-2 h-4 w-4" /> Save
                   </Button>
                 </div>
-                <Button onClick={handleSendRequest} disabled={loading}>
+                <Button onClick={handleSendRequest} disabled={loading} className="w-full sm:w-auto">
                   {loading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...
@@ -333,4 +333,3 @@ export function ApiPlayground() {
     </div>
   )
 }
-

@@ -1,3 +1,4 @@
+"use client";
 import { TutorialNavigation } from "@/components/tutorial-navigation";
 import {
   Card,
@@ -9,8 +10,12 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CodeBlock } from "@/components/code-block";
 import FadeIn from "@/components/fadein-wrapper";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useState } from "react";
 
 export default function ResponsesPage() {
+  const [tab, setTab] = useState("status");
+
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
@@ -29,8 +34,23 @@ export default function ResponsesPage() {
         </div>
 
         <FadeIn duration={150}>
-          <Tabs defaultValue="status" className="space-y-8">
-            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4">
+          {/* Mobile dropdown */}
+          <div className="block lg:hidden mb-8">
+            <Select value={tab} onValueChange={setTab}>
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="status">Status Codes</SelectItem>
+                <SelectItem value="errors">Error Handling</SelectItem>
+                <SelectItem value="formats">Response Formats</SelectItem>
+                <SelectItem value="validation">Data Validation</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <Tabs value={tab} onValueChange={setTab} className="space-y-8">
+            <TabsList className="hidden lg:grid w-full grid-cols-2 lg:grid-cols-4">
               <TabsTrigger value="status">Status Codes</TabsTrigger>
               <TabsTrigger value="errors">Error Handling</TabsTrigger>
               <TabsTrigger value="formats">Response Formats</TabsTrigger>
@@ -257,7 +277,7 @@ if (isUserResponse(data)) {
         
         <TutorialNavigation
           prevHref="/tutorials/requests"
-          prevLabel="Making Requests"
+          prevLabel="Requests"
           nextHref="/tutorials/authentication"
           nextLabel="Authentication"
         />
