@@ -12,21 +12,32 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CodeBlock } from "@/components/code-block";
 import FadeIn from "@/components/fadein-wrapper";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkIsMobile();
+    
+    // Add event listener
+    window.addEventListener("resize", checkIsMobile);
+    
+    // Cleanup
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
+
+  return isMobile;
+}
 
 export default function AdvancedPage() {
   const [activeTab, setActiveTab] = useState("caching");
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Check if we're on mobile on component mount and window resize
-  if (typeof window !== "undefined") {
-    useState(() => {
-      const checkMobile = () => setIsMobile(window.innerWidth < 768);
-      checkMobile();
-      window.addEventListener("resize", checkMobile);
-      return () => window.removeEventListener("resize", checkMobile);
-    });
-  }
+  const isMobile = useIsMobile();
 
   return (
     <div className="container mx-auto px-4 py-12">
