@@ -1,3 +1,4 @@
+"use client";
 import { TutorialNavigation } from "@/components/tutorial-navigation";
 import {
   Card,
@@ -9,8 +10,12 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CodeBlock } from "@/components/code-block";
 import FadeIn from "@/components/fadein-wrapper";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useState } from "react";
 
 export default function AuthenticationPage() {
+  const [tab, setTab] = useState("oauth");
+
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
@@ -29,13 +34,31 @@ export default function AuthenticationPage() {
         </div>
 
         <FadeIn duration={150}>
-          <Tabs defaultValue="oauth" className="space-y-8">
-            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4">
-              <TabsTrigger value="oauth">OAuth 2.0</TabsTrigger>
-              <TabsTrigger value="jwt">JWT</TabsTrigger>
-              <TabsTrigger value="apikeys">API Keys</TabsTrigger>
-              <TabsTrigger value="security">Security</TabsTrigger>
-            </TabsList>
+          {/* Mobile dropdown */}
+          <div className="block lg:hidden mb-8">
+            <Select value={tab} onValueChange={setTab}>
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="oauth">OAuth 2.0</SelectItem>
+                <SelectItem value="jwt">JWT</SelectItem>
+                <SelectItem value="apikeys">API Keys</SelectItem>
+                <SelectItem value="security">Security</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          <Tabs value={tab} onValueChange={setTab} className="space-y-8">
+            {/* Desktop tabs */}
+            <div className="hidden lg:block">
+              <TabsList className="grid w-full grid-cols-4">
+                <TabsTrigger value="oauth">OAuth 2.0</TabsTrigger>
+                <TabsTrigger value="jwt">JWT</TabsTrigger>
+                <TabsTrigger value="apikeys">API Keys</TabsTrigger>
+                <TabsTrigger value="security">Security</TabsTrigger>
+              </TabsList>
+            </div>
 
             <TabsContent value="oauth" className="space-y-4">
               <Card>
@@ -336,7 +359,7 @@ export async function POST(request: Request) {
         
         <TutorialNavigation
           prevHref="/tutorials/responses"
-          prevLabel="Handling Responses"
+          prevLabel="Responses"
           nextHref="/tutorials/advanced"
           nextLabel="Advanced Topics"
         />

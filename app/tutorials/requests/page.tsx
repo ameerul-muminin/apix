@@ -192,7 +192,7 @@ export default function RequestsPage() {
                         Contains credentials for authenticating the client with the
                         server
                       </p>
-                      <div className="p-2 bg-muted rounded text-sm font-mono">
+                      <div className="p-2 bg-muted rounded text-sm font-mono whitespace-nowrap overflow-x-auto">
                         Authorization: Bearer
                         eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
                       </div>
