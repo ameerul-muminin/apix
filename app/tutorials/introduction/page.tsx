@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -24,15 +24,15 @@ export default function IntroductionPage() {
     const checkIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     // Initial check
     checkIsMobile();
-    
+
     // Listen for window resize
-    window.addEventListener('resize', checkIsMobile);
-    
+    window.addEventListener("resize", checkIsMobile);
+
     // Cleanup
-    return () => window.removeEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
   const handleTabChange = (value: SetStateAction<string>) => {
@@ -51,8 +51,8 @@ export default function IntroductionPage() {
 
           <FadeIn duration={125}>
             <p className="text-muted-foreground">
-              Learn the fundamentals of APIs and why they&apos;re important in modern
-              web development
+              Learn the fundamentals of APIs and why they&apos;re important in
+              modern web development
             </p>
           </FadeIn>
         </div>
@@ -83,39 +83,42 @@ export default function IntroductionPage() {
                 </TabsList>
               </Tabs>
             </div>
-            
+
             {/* Content (shared between mobile and desktop) */}
             <div className="p-4 border rounded-md mt-2">
               {activeTab === "what-is-api" && (
                 <div>
-                  <h2 className="text-xl font-semibold mb-4">What is an API?</h2>
+                  <h2 className="text-xl font-semibold mb-4">
+                    What is an API?
+                  </h2>
                   <p className="mb-4">
-                    An API (Application Programming Interface) is a set of rules and
-                    protocols that allows different software applications to
+                    An API (Application Programming Interface) is a set of rules
+                    and protocols that allows different software applications to
                     communicate with each other. Think of it as a messenger that
-                    takes your request, tells the system what you want to do, and
-                    returns the response back to you.
+                    takes your request, tells the system what you want to do,
+                    and returns the response back to you.
                   </p>
                   <p className="mb-4">
                     In web development, APIs typically refer to web APIs that
-                    provide access to resources and functionality via HTTP requests.
-                    These APIs allow developers to access data and services from
-                    external systems without needing to understand the internal
-                    workings of those systems.
+                    provide access to resources and functionality via HTTP
+                    requests. These APIs allow developers to access data and
+                    services from external systems without needing to understand
+                    the internal workings of those systems.
                   </p>
                   <div className="bg-muted p-4 rounded-md my-6">
                     <h3 className="font-medium mb-2">Real-world Analogy</h3>
                     <p>
                       Think of an API like a waiter at a restaurant. You (the
-                      client) don&apos;t go directly into the kitchen (the server&apos;s
-                      internal system) to prepare your meal. Instead, you give your
-                      order to the waiter (the API), who takes it to the kitchen,
-                      and then brings back your food (the response).
+                      client) don&apos;t go directly into the kitchen (the
+                      server&apos;s internal system) to prepare your meal.
+                      Instead, you give your order to the waiter (the API), who
+                      takes it to the kitchen, and then brings back your food
+                      (the response).
                     </p>
                   </div>
                 </div>
               )}
-              
+
               {activeTab === "why-use-apis" && (
                 <div>
                   <h2 className="text-xl font-semibold mb-4">Why Use APIs?</h2>
@@ -144,8 +147,8 @@ export default function IntroductionPage() {
                       <CardContent className="pt-6">
                         <h3 className="font-medium mb-2">Scalability</h3>
                         <p>
-                          APIs allow for modular architecture, making it easier to
-                          scale specific components of your application
+                          APIs allow for modular architecture, making it easier
+                          to scale specific components of your application
                           independently.
                         </p>
                       </CardContent>
@@ -155,14 +158,15 @@ export default function IntroductionPage() {
                         <h3 className="font-medium mb-2">Specialization</h3>
                         <p>
                           Teams can specialize in different areas, with frontend
-                          developers consuming APIs created by backend specialists.
+                          developers consuming APIs created by backend
+                          specialists.
                         </p>
                       </CardContent>
                     </Card>
                   </div>
                 </div>
               )}
-              
+
               {activeTab === "api-types" && (
                 <div>
                   <h2 className="text-xl font-semibold mb-4">Types of APIs</h2>
@@ -171,34 +175,35 @@ export default function IntroductionPage() {
                       <h3 className="font-medium mb-2">REST APIs</h3>
                       <p>
                         Representational State Transfer (REST) APIs are the most
-                        common type of web API. They use standard HTTP methods (GET,
-                        POST, PUT, DELETE) and are stateless, meaning each request
-                        contains all the information needed to complete it.
+                        common type of web API. They use standard HTTP methods
+                        (GET, POST, PUT, DELETE) and are stateless, meaning each
+                        request contains all the information needed to complete
+                        it.
                       </p>
                     </div>
                     <div>
                       <h3 className="font-medium mb-2">GraphQL APIs</h3>
                       <p>
-                        GraphQL is a query language for APIs that allows clients to
-                        request exactly the data they need, making it possible to
-                        get many resources in a single request.
+                        GraphQL is a query language for APIs that allows clients
+                        to request exactly the data they need, making it
+                        possible to get many resources in a single request.
                       </p>
                     </div>
                     <div>
                       <h3 className="font-medium mb-2">SOAP APIs</h3>
                       <p>
-                        Simple Object Access Protocol (SOAP) is a protocol that uses
-                        XML for message format and typically relies on HTTP or SMTP
-                        for message transmission. It&apos;s more rigid and feature-rich
-                        than REST.
+                        Simple Object Access Protocol (SOAP) is a protocol that
+                        uses XML for message format and typically relies on HTTP
+                        or SMTP for message transmission. It&apos;s more rigid
+                        and feature-rich than REST.
                       </p>
                     </div>
                     <div>
                       <h3 className="font-medium mb-2">WebSocket APIs</h3>
                       <p>
-                        WebSocket APIs provide full-duplex communication channels
-                        over a single TCP connection, allowing for real-time data
-                        transfer between client and server.
+                        WebSocket APIs provide full-duplex communication
+                        channels over a single TCP connection, allowing for
+                        real-time data transfer between client and server.
                       </p>
                     </div>
                   </div>
