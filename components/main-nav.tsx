@@ -53,7 +53,7 @@ export function MainNav() {
     <div className="flex items-center gap-6 md:gap-10">
       <Link href="/" className="hidden items-center space-x-1 md:flex">
         <Logo className="w-6 h-6" />
-        <span className="font-shadows-into-light text-[#FFB300] text-xl font-bold">Apix</span>
+        <span className="font-shadows-into-light text-primary text-xl font-bold">Apix</span>
       </Link>
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
@@ -68,7 +68,7 @@ export function MainNav() {
         <SheetContent side="left" className="pr-0">
           <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
             <Logo className="w-6 h-6" />
-            <span className="font-shadows-into-light text-[#FFB300] text-xl font-bold">APIX</span>
+            <span className="font-shadows-into-light text-primary text-xl font-bold">APIX</span>
           </Link>
           <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
             <div className="flex flex-col space-y-3">

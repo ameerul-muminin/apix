@@ -23,7 +23,7 @@ export default function Home() {
           <FadeIn duration={125}>
             <h1 className="text-4xl font-bold tracking-tight mb-4">
               Welcome to{" "}
-              <span className="font-shadows-into-light text-[#FFB300]">
+              <span className="font-shadows-into-light text-primary">
                 Apix
               </span>
             </h1>

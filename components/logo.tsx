@@ -1,9 +1,11 @@
+import { cn } from "@/lib/utils"
+
 export function Logo({ className = "w-6 h-6" }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
-      className={className}
+      className={cn(className, "text-primary")}
       fill="none"
       stroke="currentColor"
       strokeWidth="4"
